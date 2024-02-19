@@ -1,1 +1,6 @@
-<p>job-list works!</p>
+<h2>Job List</h2>
+<ul>
+  <li *ngFor="let job of jobs">
+    <strong>{{ job.title }}</strong> - {{ job.category }}
+  </li>
+</ul>

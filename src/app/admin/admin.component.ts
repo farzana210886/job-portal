@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JobService } from '../job.service';
 
 @Component({
   selector: 'app-admin',
-  standalone: true,
-  imports: [],
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  template: `...`, // Include the HTML template here
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
+  jobs: any[];
 
+  constructor(private jobService: JobService) {}
+
+  ngOnInit() {
+    this.jobService.getJobs().subscribe((jobs) => {
+      this.jobs = jobs;
+    });
+  }
+
+  onAddJob(addedJob: any) {
+    this.jobs.push(addedJob);
+  }
 }

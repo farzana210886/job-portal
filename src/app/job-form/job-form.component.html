@@ -1,1 +1,19 @@
-<p>job-form works!</p>
+<h2>Job Form</h2>
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Job Title:</label>
+    <input type="text" id="title" formControlName="title" />
+    <div *ngIf="jobForm.get('title').invalid && jobForm.get('title').touched">
+      Title is required.
+    </div>
+  </div>
+  <div>
+    <label for="category">Job Category:</label>
+    <input type="text" id="category" formControlName="category" />
+    <div *ngIf="jobForm.get('category').invalid && jobForm.get('category').touched">
+      Category is required.
+    </div>
+  </div>
+ 
+  <button type="submit" [disabled]="jobForm.invalid">Add Job</button>
+</form>

@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JobService } from '../job.service';
 
 @Component({
   selector: 'app-landing',
-  standalone: true,
-  imports: [],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+  template: `...`, 
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
+  jobs: any[];
 
+  constructor(private jobService: JobService) {}
+
+  ngOnInit() {
+    this.jobService.getJobs().subscribe((jobs) => {
+      this.jobs = jobs;
+    });
+  }
 }
